@@ -5,7 +5,7 @@ import os
 # Função para conectar ao banco de dados PostgreSQL
 def conectar():
     conn = psycopg2.connect(
-        os.getenv('DATABASE_URL')  # O Docker vai passar essa variável de ambiente automaticamente
+        os.getenv("DATABASE_URL")
     )
     return conn
 
@@ -78,11 +78,10 @@ st.set_page_config(page_title="Sistema de Biblioteca", page_icon="📚", layout=
 
 st.title("📚 Sistema de Gerenciamento de Biblioteca")
 
-# Menu de navegação
+
 menu = ["Cadastrar Usuário", "Cadastrar Livro", "Registrar Empréstimo", "Livros Emprestados", "Usuários com Mais Empréstimos"]
 opcao = st.sidebar.selectbox("Escolha uma opção", menu)
 
-# Cadastrar Usuário
 if opcao == "Cadastrar Usuário":
     st.header("Cadastrar Novo Usuário")
     nome = st.text_input("Nome do Usuário")
