@@ -1,6 +1,41 @@
 # 📚 Sistema de Gerenciamento de Biblioteca
 Este é um sistema simples para o gerenciamento de uma biblioteca, desenvolvido utilizando Streamlit e PostgreSQL. O objetivo é facilitar o cadastro de usuários e livros, o registro de empréstimos e a consulta dos livros emprestados e dos usuários com mais empréstimos.
 
+## init.sql
+
+#### [init.sql](project_sql/init.sql)
+
+Script para criação das nossas tabelas.
+``` 
+-- Criação da tabela de usuários
+CREATE TABLE usuarios (
+    id SERIAL PRIMARY KEY,
+    nome VARCHAR(100) NOT NULL,
+    email VARCHAR(100) UNIQUE NOT NULL,
+    data_cadastro DATE DEFAULT CURRENT_DATE
+);
+
+-- Criação da tabela de livros
+CREATE TABLE livros (
+    id SERIAL PRIMARY KEY,
+    titulo VARCHAR(255) NOT NULL,
+    autor VARCHAR(100) NOT NULL,
+    status VARCHAR(20) CHECK (status IN ('disponível', 'emprestado')) DEFAULT 'disponível'
+);
+
+-- Criação da tabela de empréstimos
+CREATE TABLE emprestimos (
+    id SERIAL PRIMARY KEY,
+    usuario_id INT REFERENCES usuarios(id),
+    livro_id INT REFERENCES livros(id),
+    data_emprestimo DATE DEFAULT CURRENT_DATE,
+    prazo DATE,
+    devolvido BOOLEAN DEFAULT FALSE,
+    CONSTRAINT fk_usuario FOREIGN KEY (usuario_id) REFERENCES usuarios(id),
+    CONSTRAINT fk_livro FOREIGN KEY (livro_id) REFERENCES livros(id)
+);
+```
+
 ## Funcionalidades
 1. Cadastrar Usuário
 Permite cadastrar novos usuários no sistema, fornecendo nome e e-mail.
@@ -46,4 +81,12 @@ Emprestimos: Registra os empréstimos feitos pelos usuários, incluindo o livro,
 Streamlit: Para criar a interface interativa do sistema.    
 PostgreSQL: Para armazenar dados dos usuários, livros e empréstimos.
 
+### Recursos Criados
 
+#### Prints Sistema Biblioteca
+
+![sistema](prints/sistema.png)
+![cadastro_Usuario](prints/cadastro_usuario.png)
+![cadastro_livro](prints/cadastro_livro.png)
+![emprestimo_livro](prints/emprestimo_livro.png)
+![livros_emprestados](prints/livros_emprestados.png)
