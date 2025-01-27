@@ -30,18 +30,18 @@ DATABASE_URL=postgresql://usuario:senha@host:porta/nome_do_banco
 3. Usar Docker Compose
 Se você usa Docker Compose, crie um arquivo docker-compose.yml com a configuração do serviço e execute:
 
-docker-compose up --build
+```docker-compose up --build```
 
 Acesse a aplicação no seu navegador em: http://localhost:8501.
 
 ## O sistema utiliza as seguintes tabelas no banco de dados PostgreSQL:
 
-usuarios: Contém informações dos usuários da biblioteca.
-livros: Contém informações sobre os livros disponíveis.
-emprestimos: Registra os empréstimos feitos pelos usuários, incluindo o livro, usuário e prazo.
+Usuarios: Contém informações dos usuários da biblioteca.    
+Livros: Contém informações sobre os livros disponíveis.     
+Emprestimos: Registra os empréstimos feitos pelos usuários, incluindo o livro, usuário e prazo.
 
 ## Tecnologias Utilizadas
-Streamlit: Para criar a interface interativa do sistema.
+Streamlit: Para criar a interface interativa do sistema.    
 PostgreSQL: Para armazenar dados dos usuários, livros e empréstimos.
 
 
