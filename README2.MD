@@ -1,7 +1,7 @@
-📚 Sistema de Gerenciamento de Biblioteca
+# 📚 Sistema de Gerenciamento de Biblioteca
 Este é um sistema simples para o gerenciamento de uma biblioteca, desenvolvido utilizando Streamlit e PostgreSQL. O objetivo é facilitar o cadastro de usuários e livros, o registro de empréstimos e a consulta dos livros emprestados e dos usuários com mais empréstimos.
 
-Funcionalidades
+## Funcionalidades
 1. Cadastrar Usuário
 Permite cadastrar novos usuários no sistema, fornecendo nome e e-mail.
 
@@ -17,9 +17,7 @@ Exibe uma lista de livros que estão atualmente emprestados, com informações s
 5. Usuários com Mais Empréstimos
 Exibe uma lista dos usuários que mais realizaram empréstimos, com a contagem total de empréstimos realizados.
 
- empréstimos realizados.
-
-Como usar
+## Como usar
 1. Pré-requisitos
 Docker e Docker Compose instalados na sua máquina.
 Banco de dados PostgreSQL configurado com as tabelas usuarios, livros e emprestimos.
@@ -36,13 +34,13 @@ docker-compose up --build
 
 Acesse a aplicação no seu navegador em: http://localhost:8501.
 
-O sistema utiliza as seguintes tabelas no banco de dados PostgreSQL:
+## O sistema utiliza as seguintes tabelas no banco de dados PostgreSQL:
 
 usuarios: Contém informações dos usuários da biblioteca.
 livros: Contém informações sobre os livros disponíveis.
 emprestimos: Registra os empréstimos feitos pelos usuários, incluindo o livro, usuário e prazo.
 
-Tecnologias Utilizadas
+## Tecnologias Utilizadas
 Streamlit: Para criar a interface interativa do sistema.
 PostgreSQL: Para armazenar dados dos usuários, livros e empréstimos.
 
