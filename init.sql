@@ -1,3 +1,4 @@
+-- Criação da tabela de usuários
 CREATE TABLE usuarios (
     id SERIAL PRIMARY KEY,
     nome VARCHAR(100) NOT NULL,
@@ -5,6 +6,7 @@ CREATE TABLE usuarios (
     data_cadastro DATE DEFAULT CURRENT_DATE
 );
 
+-- Criação da tabela de livros
 CREATE TABLE livros (
     id SERIAL PRIMARY KEY,
     titulo VARCHAR(255) NOT NULL,
@@ -12,6 +14,7 @@ CREATE TABLE livros (
     status VARCHAR(20) CHECK (status IN ('disponível', 'emprestado')) DEFAULT 'disponível'
 );
 
+-- Criação da tabela de empréstimos
 CREATE TABLE emprestimos (
     id SERIAL PRIMARY KEY,
     usuario_id INT REFERENCES usuarios(id),
