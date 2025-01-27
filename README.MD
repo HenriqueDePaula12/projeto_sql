@@ -36,20 +36,27 @@ CREATE TABLE emprestimos (
 );
 ```
 
+## DOCKERFILE
+
+#### [Dockerfile](project_sql/Dockerfile)
+
+Este Dockerfile cria um ambiente para rodar a aplicação Streamlit. Ele pega uma imagem do Python 3.10 como base, depois configura o diretório onde os arquivos da aplicação vão ficar dentro do contêiner. Em seguida, ele copia tudo do projeto para lá e instala as dependências que a aplicação precisa, usando o arquivo requirements.txt. Ele também deixa a porta 8501, que o Streamlit usa, disponível para acessarmos a aplicação. Por fim, ele configura o comando que vai rodar automaticamente quando o contêiner iniciar, abrindo a aplicação na rede e permitindo que você acesse pelo navegador
+
+
 ## Funcionalidades
-1. Cadastrar Usuário
+1. Cadastrar Usuário    
 Permite cadastrar novos usuários no sistema, fornecendo nome e e-mail.
 
-2. Cadastrar Livro
+2. Cadastrar Livro  
 Permite cadastrar novos livros na biblioteca, incluindo título e autor.
 
-3. Registrar Empréstimo
+3. Registrar Empréstimo 
 Facilita o registro de empréstimos, associando um livro a um usuário e determinando o prazo para devolução.
 
-4. Livros Emprestados
+4. Livros Emprestados   
 Exibe uma lista de livros que estão atualmente emprestados, com informações sobre o usuário e o prazo de devolução.
 
-5. Usuários com Mais Empréstimos
+5. Usuários com Mais Empréstimos    
 Exibe uma lista dos usuários que mais realizaram empréstimos, com a contagem total de empréstimos realizados.
 
 ## Como usar

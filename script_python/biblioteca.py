@@ -2,14 +2,12 @@ import streamlit as st
 import psycopg2
 import os
 
-# Função para conectar ao banco de dados PostgreSQL
 def conectar():
     conn = psycopg2.connect(
         os.getenv("DATABASE_URL")
     )
     return conn
 
-# Função para inserir novos usuários
 def inserir_usuario(nome, email):
     conn = conectar()
     cursor = conn.cursor()
@@ -19,7 +17,6 @@ def inserir_usuario(nome, email):
     cursor.close()
     conn.close()
 
-# Função para inserir novos livros
 def inserir_livro(titulo, autor):
     conn = conectar()
     cursor = conn.cursor()
@@ -29,7 +26,6 @@ def inserir_livro(titulo, autor):
     cursor.close()
     conn.close()
 
-# Função para registrar empréstimo
 def registrar_emprestimo(usuario_id, livro_id, prazo):
     conn = conectar()
     cursor = conn.cursor()
@@ -39,7 +35,6 @@ def registrar_emprestimo(usuario_id, livro_id, prazo):
     cursor.close()
     conn.close()
 
-# Função para exibir livros emprestados
 def livros_emprestados():
     conn = conectar()
     cursor = conn.cursor()
@@ -56,7 +51,6 @@ def livros_emprestados():
     conn.close()
     return livros
 
-# Função para exibir usuários com mais empréstimos
 def usuarios_com_mais_emprestimos():
     conn = conectar()
     cursor = conn.cursor()
@@ -73,7 +67,6 @@ def usuarios_com_mais_emprestimos():
     conn.close()
     return usuarios
 
-# Interface do Streamlit
 st.set_page_config(page_title="Sistema de Biblioteca", page_icon="📚", layout="wide")
 
 st.title("📚 Sistema de Gerenciamento de Biblioteca")
@@ -94,7 +87,6 @@ if opcao == "Cadastrar Usuário":
         else:
             st.error("Por favor, preencha todos os campos.")
 
-# Cadastrar Livro
 elif opcao == "Cadastrar Livro":
     st.header("Cadastrar Novo Livro")
     titulo = st.text_input("Título do Livro")
@@ -107,11 +99,9 @@ elif opcao == "Cadastrar Livro":
         else:
             st.error("Por favor, preencha todos os campos.")
 
-# Registrar Empréstimo
 elif opcao == "Registrar Empréstimo":
     st.header("Registrar Empréstimo")
     
-    # Listar usuários
     conn = conectar()
     cursor = conn.cursor()
     cursor.execute("SELECT id, nome FROM usuarios")
@@ -121,7 +111,6 @@ elif opcao == "Registrar Empréstimo":
     
     usuario = st.selectbox("Selecione o Usuário", [u[1] for u in usuarios])
     
-    # Listar livros disponíveis
     conn = conectar()
     cursor = conn.cursor()
     cursor.execute("SELECT id, titulo FROM livros WHERE status = 'disponível'")
@@ -141,7 +130,6 @@ elif opcao == "Registrar Empréstimo":
         else:
             st.error("Por favor, preencha todos os campos.")
 
-# Livros Emprestados
 elif opcao == "Livros Emprestados":
     st.header("Livros Emprestados")
     livros = livros_emprestados()
@@ -151,7 +139,6 @@ elif opcao == "Livros Emprestados":
     else:
         st.write("Não há livros emprestados no momento.")
 
-# Usuários com Mais Empréstimos
 elif opcao == "Usuários com Mais Empréstimos":
     st.header("Usuários com Mais Empréstimos")
     usuarios = usuarios_com_mais_emprestimos()
